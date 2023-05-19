@@ -1,0 +1,14 @@
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/bin/Debug/net7.0/DataLayer.deps.json
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/bin/Debug/net7.0/DataLayer.runtimeconfig.json
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/bin/Debug/net7.0/DataLayer.dll
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/bin/Debug/net7.0/DataLayer.pdb
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/obj/Debug/net7.0/DataLayer.csproj.AssemblyReference.cache
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/obj/Debug/net7.0/DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/obj/Debug/net7.0/DataLayer.AssemblyInfoInputs.cache
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/obj/Debug/net7.0/DataLayer.AssemblyInfo.cs
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/obj/Debug/net7.0/DataLayer.csproj.CoreCompileInputs.cache
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/obj/Debug/net7.0/DataLayer.dll
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/obj/Debug/net7.0/refint/DataLayer.dll
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/obj/Debug/net7.0/DataLayer.pdb
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/obj/Debug/net7.0/DataLayer.genruntimeconfig.cache
+/Users/simonnewham/Projects/NewhamWebApi/DataLayer/obj/Debug/net7.0/ref/DataLayer.dll

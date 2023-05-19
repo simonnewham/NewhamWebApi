@@ -20,6 +20,14 @@ namespace WebApi.Controllers
 		public IEnumerable<FAQDetailsDto> GetFAQList()
 		{
 			return _faqService.GetFAQList();
-		} 
+		}
+
+		// TODO: Add JWT auth
+        [HttpPost]
+        [Route("Add")]
+        public FAQDetailsDto Add(FAQAddDto requestModel)
+        {
+            return _faqService.Add(requestModel);
+        }
     }
 }

@@ -1,10 +1,14 @@
-﻿using Services;
+﻿using DataLayer;
+using Services;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+
+    // Context
+    builder.Services.AddDbContext<DataContext>();
 
     // Custom Services
     builder.Services.AddScoped<IFAQService, FAQService>();
