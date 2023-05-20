@@ -15,6 +15,10 @@ namespace WebApi.Controllers
 			_faqService = faqService;
 		}
 
+		/// <summary>
+		/// Get a list of frequently asked questions
+		/// </summary>
+		/// <returns></returns>
 		[HttpGet]
 		[Route("FAQList")]
 		public IEnumerable<FAQDetailsDto> GetFAQList()
@@ -22,11 +26,16 @@ namespace WebApi.Controllers
 			return _faqService.GetFAQList();
 		}
 
-		// TODO: Add JWT auth
+        /// <summary>
+        /// Add a new frequently asked question
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Add")]
         public FAQDetailsDto Add(FAQAddDto requestModel)
         {
+            // TODO: Add JWT auth
             return _faqService.Add(requestModel);
         }
     }

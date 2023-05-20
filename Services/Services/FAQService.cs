@@ -1,26 +1,26 @@
 ﻿using Models;
 using DataLayer;
 using DataLayer.Data;
+using AutoMapper;
 
 namespace Services
 {
     public class FAQService : IFAQService
     {
         private readonly DataContext _dataContext;
+        private readonly IMapper _mapper;
 
-        public FAQService(DataContext dataContext)
+        public FAQService(DataContext dataContext,
+            IMapper mapper)
         {
             _dataContext = dataContext;
+            _mapper = mapper;
         }
 
         public IEnumerable<FAQDetailsDto> GetFAQList()
         {  
-           return _dataContext.FAQs.Select(t => new FAQDetailsDto
-            {
-                Id = t.Id,
-                Question = t.Question,
-                Answer = t.Answer
-            }).ToList();
+           return _dataContext.FAQs.Select(t => _mapper.Map<FAQDetailsDto>(t))
+                .ToList();
         }
 
         public FAQDetailsDto Add(FAQAddDto requestModel)
@@ -33,32 +33,7 @@ namespace Services
 
             _dataContext.SaveChanges();
 
-            // TODO: Automapper
-            return new FAQDetailsDto
-            {
-                Id = faq.Entity.Id,
-                Question = faq.Entity.Question,
-                Answer = faq.Entity.Answer
-            };
+            return _mapper.Map<FAQDetailsDto>(faq.Entity);
         }
-
-        //private IEnumerable<FAQ> FAQs
-        //{
-        //    get => new List<FAQ>()
-        //    {         
-        //        new FAQ
-        //        {
-        //            Id = 1,
-        //            Question = "What does a Consultation include and what does it cost?",
-        //            Answer = "A consultation costs R2000."
-        //        },
-        //        new FAQ
-        //        {
-        //            Id = 2,
-        //            Question = "What is a follow up visit and what does that cost?",
-        //            Answer = "A visit that follows."
-        //        }
-        //    };
-        //}
     }
 }
