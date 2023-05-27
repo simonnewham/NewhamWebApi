@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Models;
 using Services;
 
@@ -33,9 +34,9 @@ namespace WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Add")]
+		[Authorize]
         public FAQDetailsDto Add(FAQAddDto requestModel)
-        {
-            // TODO: Add JWT auth
+		{ 
             return _faqService.Add(requestModel);
         }
     }
