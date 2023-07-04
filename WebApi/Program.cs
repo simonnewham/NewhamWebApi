@@ -16,27 +16,29 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddDbContext<DataContext>();
 
     // Firebase
-    builder.Services.AddSingleton(FirebaseApp.Create(new AppOptions
-    {
-        Credential = GoogleCredential.FromJson(builder.Configuration.GetValue<string>("FirebaseConfig"))
-    }));
+    // builder.Services.AddSingleton(FirebaseApp.Create(new AppOptions
+    // {
+    //     Credential = GoogleCredential.FromJson(builder.Configuration.GetValue<string>("FirebaseConfig"))
+    // }));
 
-    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => {
-        opt.Authority = builder.Configuration.GetValue<string>("Jwt:Firebase:ValidIssuer");
+    // builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => {
+    //     opt.Authority = builder.Configuration.GetValue<string>("Jwt:Firebase:ValidIssuer");
 
-        opt.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration.GetValue<string>("Jwt:Firebase:ValidIssuer"),
-            ValidAudience = builder.Configuration.GetValue<string>("Jwt:Firebase:ValidAudience")
-        };
-    });
+    //     opt.TokenValidationParameters = new TokenValidationParameters
+    //     {
+    //         ValidateIssuer = true,
+    //         ValidateAudience = true,
+    //         ValidateLifetime = true,
+    //         ValidateIssuerSigningKey = true,
+    //         ValidIssuer = builder.Configuration.GetValue<string>("Jwt:Firebase:ValidIssuer"),
+    //         ValidAudience = builder.Configuration.GetValue<string>("Jwt:Firebase:ValidAudience")
+    //     };
+    // });
 
     // Custom Services
     builder.Services.AddScoped<IFAQService, FAQService>();
+
+    builder.Services.AddHealthChecks();
 };
 
 var app = builder.Build();
@@ -49,8 +51,9 @@ var app = builder.Build();
     }
 
     app.UseHttpsRedirection();
-    app.UseAuthentication(); // Will set HTTPConext.User (ClaimsPrinciple)
-    app.UseAuthorization();
+    //app.UseAuthentication(); // Will set HTTPConext.User (ClaimsPrinciple)
+    //app.UseAuthorization();
+    app.MapHealthChecks("/health");
     app.MapControllers();
     app.Run();
 }
